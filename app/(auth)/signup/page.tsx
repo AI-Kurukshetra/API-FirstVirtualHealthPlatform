@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
+import { getEmailRedirectUrl } from "@/lib/auth/email-redirect";
 import { createClient } from "@/lib/supabase/client";
 
 export default function SignupPage() {
@@ -18,7 +19,13 @@ export default function SignupPage() {
     }
 
     setMessage("Creating account...");
-    const { error } = await supabase.auth.signUp({ email, password });
+    const { error } = await supabase.auth.signUp({
+      email,
+      password,
+      options: {
+        emailRedirectTo: getEmailRedirectUrl("/dashboard")
+      }
+    });
     if (error) {
       setMessage(error.message);
       return;

@@ -86,8 +86,11 @@ npm run test:e2e
    - `supabase/migrations/001_initial_schema.sql`
    - `supabase/policies/002_rls_policies.sql`
 3. Enable Realtime for `messages`, `notifications`, `appointments` tables.
-4. Configure auth providers and email templates.
-5. Deploy edge functions from `supabase/functions/`.
+4. Configure Supabase Auth URLs:
+   - `SITE_URL`: your production app URL (for example `https://your-domain.com`)
+   - `Additional Redirect URLs`: include production URL and local URL (for example `http://localhost:3000/*`)
+5. Configure auth providers and email templates.
+6. Deploy edge functions from `supabase/functions/`.
 
 ## Security Notes
 
