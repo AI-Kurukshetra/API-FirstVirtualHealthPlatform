@@ -1,5 +1,3 @@
-import { ChatPanel } from "@/components/messaging/chat-panel";
-
 export default function BillingPage() {
   return (
     <section className="grid gap-6 lg:grid-cols-2">
@@ -23,9 +21,12 @@ export default function BillingPage() {
         </div>
       </article>
 
-      <div className="lg:col-span-2">
-        <ChatPanel channelId="billing-team" />
-      </div>
+      <article className="card space-y-3 lg:col-span-2">
+        <h2 className="text-lg font-semibold text-slate-900">Care Coordination</h2>
+        <p className="text-sm text-slate-600">
+          Use <code>/messages</code> for secure patient-provider chat and notification workflows linked to billing follow-ups.
+        </p>
+      </article>
     </section>
   );
 }

@@ -1,7 +1,7 @@
 import { NextResponse, type NextRequest } from "next/server";
 import { createMiddlewareSupabaseClient } from "@/lib/supabase/middleware";
 
-const AUTH_ROUTES = ["/dashboard", "/patients", "/appointments", "/consultation", "/billing", "/provider", "/patient", "/api"];
+const AUTH_ROUTES = ["/dashboard", "/patients", "/appointments", "/consultation", "/messages", "/billing", "/provider", "/patient", "/api"];
 const PROVIDER_ROUTES = ["/provider", "/patients"];
 const ADMIN_ROUTES = ["/billing", "/api/claims", "/api/payments"];
 
@@ -67,5 +67,5 @@ export async function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/dashboard/:path*", "/patients/:path*", "/appointments/:path*", "/consultation/:path*", "/billing/:path*", "/provider/:path*", "/patient/:path*", "/api/:path*"]
+  matcher: ["/dashboard/:path*", "/patients/:path*", "/appointments/:path*", "/consultation/:path*", "/messages/:path*", "/billing/:path*", "/provider/:path*", "/patient/:path*", "/api/:path*"]
 };

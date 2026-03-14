@@ -14,6 +14,7 @@ const links: Array<{ href: string; label: string; roles: AppRole[] }> = [
   { href: "/patients", label: "Patients", roles: ["admin", "provider", "staff"] },
   { href: "/appointments", label: "Appointments", roles: ["admin", "provider", "staff", "patient"] },
   { href: "/consultation", label: "Consultation", roles: ["admin", "provider", "staff", "patient"] },
+  { href: "/messages", label: "Messages", roles: ["admin", "provider", "staff", "patient"] },
   { href: "/billing", label: "Billing", roles: ["admin", "staff"] },
   { href: "/patient", label: "Patient Portal", roles: ["admin", "provider", "staff", "patient"] },
   { href: "/provider", label: "Provider", roles: ["admin", "provider", "staff"] }

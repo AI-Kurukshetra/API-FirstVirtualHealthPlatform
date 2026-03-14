@@ -1,5 +1,7 @@
 import { describe, expect, test } from "vitest";
 import { appointmentCreateSchema } from "@/lib/validators/appointment";
+import { messageCreateSchema, messageListQuerySchema } from "@/lib/validators/message";
+import { notificationCreateSchema } from "@/lib/validators/notification";
 import { patientCreateSchema } from "@/lib/validators/patient";
 
 describe("validators", () => {
@@ -23,6 +25,36 @@ describe("validators", () => {
       provider_id: "00000000-0000-0000-0000-000000000001",
       starts_at: "2026-04-01T10:00:00.000Z",
       ends_at: "2026-04-01T09:00:00.000Z"
+    });
+
+    expect(result.success).toBe(false);
+  });
+
+  test("message schema requires recipient and content", () => {
+    const result = messageCreateSchema.safeParse({
+      recipient_id: "00000000-0000-0000-0000-000000000001",
+      content: "Follow-up on your treatment plan."
+    });
+
+    expect(result.success).toBe(true);
+  });
+
+  test("message query schema validates UUID conversation id", () => {
+    const result = messageListQuerySchema.safeParse({
+      conversation_with: "invalid-value",
+      limit: "20",
+      offset: "0"
+    });
+
+    expect(result.success).toBe(false);
+  });
+
+  test("notification schema enforces channel values", () => {
+    const result = notificationCreateSchema.safeParse({
+      user_id: "00000000-0000-0000-0000-000000000002",
+      channel: "fax",
+      title: "Reminder",
+      body: "Please complete intake forms."
     });
 
     expect(result.success).toBe(false);
